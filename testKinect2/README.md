@@ -8,24 +8,24 @@ En voici une autre dont le principe est de lire les données couleurs issues de 
 
 - Ajouter un composant pictureBox sur le formulaire et le renommer pbKinectVideo
 - Dans le code, ajouter les espaces de nom suivant :
+ - `using System.Runtime.InteropServices;`
+ - `using System.Drawing.Imaging;`
+
+Ajouter les attributs privés suivant à la classe du formulaire (normalement Form1) :
+
+```C
+private KinectSensor sensor;
+private byte[] colorData = null;
+private IntPtr colorPtr;
+private Bitmap kinectVideoBitmap = null;
+```
 
 
+Dans le gestionnaire d'événement `Form1_Load()`, ajouter l'activation de la lecture du flux vidéo après l'activation de la détection des squelettes :
 
-    using System.Runtime.InteropServices;
-    using System.Drawing.Imaging;
-
-- Ajouter les attributs privés suivant à la classe du formulaire (normalement Form1) :
-
-    private KinectSensor sensor;
-    private byte[] colorData = null;
-    private IntPtr colorPtr;
-    private Bitmap kinectVideoBitmap = null;
-
-- Dans le gestionnaire d'événement Form1_Load(), ajouter l'activation de la lecture du flux vidéo après l'activation de la détection des squelettes :
-
-//enable color video stream
-sensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
-sensor.ColorFrameReady += SensorColorFrameReady;
+    //enable color video stream
+    sensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
+    sensor.ColorFrameReady += SensorColorFrameReady;
 
 Ecrire le gestionnaire d'événement de disponibilité d'une nouvelle image couleur disponible `SensorColorFrameReady()` :
 
