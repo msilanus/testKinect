@@ -44,6 +44,7 @@ Il ne reste plus qu'à tester si une Kinect est bien connectée à l'ordinateur.
 La Kinect est capable de reconnaître les joueurs qui interagissent avec celle-ci. Le processus consiste à identifier le squelette du joueur qui sera fourni sous forme d'une collection de points 3D avec un index pour identifier le joueur (1 à 6).
 
 Chaque squelette est composé de jointures :  **HipCenter, ShoulderCenter, Spine, Head, ShoulderLeft, ShoulderRight, ElbowLeft, ElbowRight, WristLeft, WristRight, HandLeft, HandRight, HipLeft, HipRight, KneeLeft, KneeRight, AnkleLeft, AnkleRight, FootLeft et FootRight**.
+
 ![Les jointures détectées](http://silanus.fr/sin/wp-content/uploads/2017/02/bodyparts.jpg)
 
 L’événement permettant de récupérer les données reliées aux squelettes est `SkeletetonFrameReadyEventArgs`. Cet événement retourne un objet de type SkeletonFrame avec la méthode `OpenSkeletonFrame`.
